@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+    <title>{% block title %}Eventium{% endblock %}</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <a id="logo" href="{% url 'index' %}">
+                <img id="logo-img" src="{% static 'images/logo-img.png' %}" alt="logo" />
+            </a>
+
+            <nav>
+                {% if organizer %}
+                    <div class="user">
+                        <a href="{% url 'events' %}">Events</a>
+                        <a href="{% url 'create-event' %}">New Event</a>
+                        <a href="{% url 'details-organizer' %}">Organizer's Profile</a>
+                    </div>
+                {% else %}
+                    <div class="guest">
+                        <a href="{% url 'create-organizer' %}">New Organizer</a>
+                    </div>
+                {% endif %}
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Eventium by SoftUni Team. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

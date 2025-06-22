@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Organizer - Eventium{% endblock %}
+
+{% block content %}
+<section id="register">
+    <div class="form">
+        <h2>New Organizer's Profile</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

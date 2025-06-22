@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Organizer's Profile - {{ form.instance.company_name }}{% endblock %}
+
+{% block content %}
+    <section id="register">
+        <div class="form">
+            <h2>Edit Organizer's Profile</h2>
+            <form class="register-form" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit">Edit</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

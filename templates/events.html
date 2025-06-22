@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Eventium - Events{% endblock %}
+{% load static %}
+{% block content %}
+  {% if events %}
+    <h2>We have {{ events|length }} event{{ events|length|pluralize }} in total.</h2>
+
+    <section id="dashboard">
+      {% for event in events %}
+        <div class="post">
+          <h3 class="title">{{ event.slogan|truncatechars:20 }}</h3>
+          <img
+            <img src="{{ event.banner_url|default:'/static/images/event-default-img.png' }}"
+            alt="{{ event.slogan }} img"
+          />
+          <p class="description">{{ event.start_time|date:"D d M Y H:i" }}</p>
+          <p class="description">{{ event.location }}</p>
+          <a class="details-btn" href="{% url 'details-event' event.pk %}">Click for more</a>
+        </div>
+      {% endfor %}
+    </section>
+  {% else %}
+    <h2>No events so far.</h2>
+  {% endif %}
+{% endblock %}

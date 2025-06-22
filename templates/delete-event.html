@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load form_filters %}
+{% load static %}
+{% block title %}Delete Event - {{ form.instance.slogan }}{% endblock %}
+
+{% block content %}
+    <section id="edit">
+        <div class="form">
+            <h2>Delete Event</h2>
+            <form method="POST" class="edit-form">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div>
+                        {{ form.slogan|readonly }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create New Event{% endblock %}
+
+{% block content %}
+<section id="create">
+    <div class="form">
+        <h2>New Event</h2>
+        <form method="POST" class="create-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Create event</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

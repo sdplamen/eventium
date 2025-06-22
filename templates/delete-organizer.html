@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_filters %}
+{% block title %}Delete Organizer's Profile{% endblock %}
+
+{% block content %}
+<section id="edit">
+    <div class="form">
+        <img class="dell-img" src="{% static 'images/del.png' %}" alt="Delete Organizer" />
+        
+        <h1>Do you like to delete your Organizer's Profile?</h1>
+        <p>*Note: If you have upcoming events, your profile will NOT be deleted!</p>
+
+        <form id="delete" class="register-form" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    {{ field|readonly }}
+                </div>
+            {% endfor %}
+            <button type="submit">Yes, delete it!</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
